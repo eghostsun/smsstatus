@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="LS_MTSMS" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.slf.engine.bo.LsMtsms" >
+    <result column="DXID" property="dxid" jdbcType="DECIMAL" />
+    <result column="DLID" property="dlid" jdbcType="DECIMAL" />
+    <result column="JRBZ" property="jrbz" jdbcType="CHAR" />
+    <result column="DLFLSH" property="dlflsh" jdbcType="VARCHAR" />
+    <result column="PCH" property="pch" jdbcType="DECIMAL" />
+    <result column="YYS" property="yys" jdbcType="CHAR" />
+    <result column="JG" property="jg" jdbcType="DECIMAL" />
+    <result column="TDBH" property="tdbh" jdbcType="CHAR" />
+    <result column="FSH" property="fsh" jdbcType="VARCHAR" />
+    <result column="FSHM" property="fshm" jdbcType="VARCHAR" />
+    <result column="FSNR" property="fsnr" jdbcType="VARCHAR" />
+    <result column="FSRQ" property="fsrq" jdbcType="CHAR" />
+    <result column="FSSJ" property="fssj" jdbcType="CHAR" />
+    <result column="FHSJ" property="fhsj" jdbcType="CHAR" />
+    <result column="ZT" property="zt" jdbcType="CHAR" />
+    <result column="FHXX" property="fhxx" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="lsMtsmsResult1" class="com.slf.engine.bo.LsMtsms">
+  	<result column="DXID" property="dxid" jdbcType="DECIMAL" />
+  	 <result column="DLID" property="dlid" jdbcType="DECIMAL" />
+  	 <result column="TDBH" property="tdbh" jdbcType="CHAR" />
+    <result column="PCH" property="pch" jdbcType="VARCHAR" />
+    <result column="DLFLSH" property="dlflsh" jdbcType="VARCHAR" />
+    <result column="FSHM" property="fshm" jdbcType="VARCHAR" />
+  </resultMap>
+
+  
+  <select id="getSmsInfo" parameterClass="com.slf.engine.bo.LsMtsms" resultMap="lsMtsmsResult1">  
+  	select t.dxid,t.dlid,t.tdbh,t.pch,t.dlflsh,t.fshm from $tableUser$ls_mtsms t
+  	where t.FHXX=#fhxx# and t.fshm=#fshm#
+  </select>
+  
+  <select id="getSmsHis" parameterClass="com.slf.engine.bo.LsMtsms" resultMap="lsMtsmsResult1">
+  	select t.dxid,t.dlid,t.tdbh,t.pch,t.dlflsh,t.fshm from $tableUser$ls_mtsms_clj t
+  	where t.FHXX=#fhxx# and t.fshm=#fshm#
+  </select>
+  
+</sqlMap>
